@@ -11,10 +11,10 @@ export const sendEmailForVerification=async(email,verificationToken)=>{
         category:"Email Verification",
         html:VERIFICATION_EMAIL_TEMPLATE.replace("{verificationCode}",verificationToken)
     })
-    console.log("email send successfully")
+    
   }
   catch(e){
-    console.log("error in sending email "+e)
+    
     throw new Error("Error in sending email"+e)
   }
 }
@@ -33,10 +33,10 @@ export const sendWelcomeEmail=async(email,name)=>{
               "name": name
             }
         })
-        console.log("welcome Email sent "+res)
+        
     }
     catch(e){
-        console.log("error in sending welcome email"+e)
+       
         throw new Error("error in sending welcome email"+e)
     }
 
@@ -54,7 +54,7 @@ export const sendResetPasswordEmail=async(email,url)=>{
         })
     }
     catch(e){
-        console.log("error in sending reset password email:"+e)
+        
         throw new Error(e)
     }
 }
@@ -70,10 +70,10 @@ export const sendPasswordUpdateSuccessEmail=async(email)=>{
             html:PASSWORD_RESET_SUCCESS_TEMPLATE
         })
 
-        console.log("password update email sent successfully")
+        
      }
      catch(e){
-        console.log("error in sending password update successful msg: "+e)
+       
         throw new Error(e)
      }
 }

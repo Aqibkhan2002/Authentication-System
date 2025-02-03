@@ -18,7 +18,7 @@ export const verifyToken=(req,res,next)=>{
         next()
      }
      catch(e){
-        console.log("error in verifying token:"+e)
+        
         return res.status(500).json({success:false,message:e.message})
      }
 }

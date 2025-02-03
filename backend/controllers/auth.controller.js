@@ -21,9 +21,9 @@ export const signup=async(req,res)=>{
 
 
 
-        console.log("try")
+        
         const hashedPassword=await bcrypt.hash(password,parseInt(process.env.ROUNDS))
-        console.log(hashedPassword)
+        
 
 
 
@@ -56,7 +56,7 @@ export const signup=async(req,res)=>{
         })
     }
     catch(e){
-        console.log("catch")
+        
       return res.status(400).json({success:false,message:e.message})
     }
 }
@@ -93,7 +93,7 @@ export const verifyEmail=async(req,res)=>{
         })
     }
     catch(e){
-        console.log("error in verifyEmail: "+e)
+       
         return res.status(500).json({success:false,message:"Server Error"})
     }
 }
@@ -197,7 +197,7 @@ export const resetPassword=async(req,res)=>{
         return res.status(200).json({success:true,message:'password updated successfully'})
     }
     catch(e){
-           console.log("error in resetPassword: "+e)
+           
            return res.status(500).json({success:false,message:e.message})
     }
 
@@ -243,7 +243,7 @@ export const getUser=async(req,res)=>{
         })
     }
     catch(e){
-        console.log("errror in checkAuth:"+e)
+        
         return res.status(500).json({success:false,message:e.message})
     }
 
