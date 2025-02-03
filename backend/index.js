@@ -8,7 +8,7 @@ import cors from "cors"
 
 dotenv.config()
 
-const allowedOrigins=['http://localhost:5173']
+const allowedOrigins=[process.env.ALLOWED_ORIGINS]
 
 const PORT=process.env.PORT || 3000
 
