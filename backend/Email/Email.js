@@ -27,11 +27,9 @@ export const sendWelcomeEmail=async(email,name)=>{
         const res=await transporter.sendMail({
             from:sender,
             to:recepient,
-            template_uuid: "9578a227-5918-4dab-9d71-8a302406ccc5",
-            template_variables: {
-              "company_info_name": "Auth Company",
-              "name": name
-            }
+            subject:"Welcome to Auth",
+            text:"Thank you for choosing our Platform. Hope you will like our services",
+            
         })
         
     }
