@@ -1,14 +1,15 @@
 import dotenv from "dotenv";
 dotenv.config();
-import { MailtrapClient } from "mailtrap";
+import nodemailer from "nodemailer"
 
-const TOKEN = process.env.MAIL_TOKEN;
-
-export const client = new MailtrapClient({
-  token: TOKEN,
+export const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  secure:true,
+  port:parseInt(process.env.MAIL_PORT), 
+  auth: {
+      user: process.env.SENDER_EMAIL, // Your email address
+      pass: process.env.APP_PASSWORD, // Your email password or app password
+  },
 });
 
-export const sender = {
-  email: process.env.SENDER_EMAIL,
-  name: process.env.SENDER_NAME,
-};
+export const sender=process.env.SENDER_EMAIL

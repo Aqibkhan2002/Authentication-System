@@ -1,10 +1,10 @@
-import { client,sender } from "./Email.config.js"
+import { transporter,sender} from "./Email.config.js"
 import { VERIFICATION_EMAIL_TEMPLATE,PASSWORD_RESET_REQUEST_TEMPLATE,PASSWORD_RESET_SUCCESS_TEMPLATE } from "./Email.template.js"
 
 export const sendEmailForVerification=async(email,verificationToken)=>{
-  const recepient=[{email}]
+  const recepient=email
   try{
-    const response=await client.send({
+    const response=await transporter.sendMail({
         from:sender,
         to:recepient,
         subject:"Verify your Email",
@@ -21,10 +21,10 @@ export const sendEmailForVerification=async(email,verificationToken)=>{
 
 export const sendWelcomeEmail=async(email,name)=>{
 
-    const recepient=[{email}]
+    const recepient=email
     
     try{
-        const res=await client.send({
+        const res=await transporter.sendMail({
             from:sender,
             to:recepient,
             template_uuid: "9578a227-5918-4dab-9d71-8a302406ccc5",
@@ -44,9 +44,9 @@ export const sendWelcomeEmail=async(email,name)=>{
 
 export const sendResetPasswordEmail=async(email,url)=>{
    
-    const recepient=[{email}]
+    const recepient=email
     try{
-        const res=await client.send({
+        const res=await transporter.sendMail({
             from:sender,
             to:recepient,
             subject:"Reset Your Password",
@@ -60,9 +60,9 @@ export const sendResetPasswordEmail=async(email,url)=>{
 }
 
 export const sendPasswordUpdateSuccessEmail=async(email)=>{
-    const recepient=[{email}]
+    const recepient=email
      try{
-          const res=await client.send({
+          const res=await transporter.sendMail({
             from:sender,
             to:recepient,
             subject:"Update Successful",
